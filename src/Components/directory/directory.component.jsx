@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './directory.styles.scss';
 import MenuItem from '../menu-item/menu.item.component';
 
@@ -30,14 +30,14 @@ class Directory extends React.Component {
                   imageUrl: 'https://www.parenttoolkit.com/images/dmImage/SourceImage/standard_1500x1125_groupofteens2.jpg',
                   size: 'large',
                   id: 4,
-                  linkUrl: 'shop/womens'
+                  linkUrl: 'shop/adults'
                 },
                 {
                   title: 'for them',
                   imageUrl: 'https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/ptBR/Images/kids-ss20-kidsattack-klp-signup-d_tcm194-409508.jpg',
                   size: 'large',
                   id: 5,
-                  linkUrl: 'shop/mens'
+                  linkUrl: 'shop/kids'
                 }
             ] 
         }
@@ -45,12 +45,10 @@ class Directory extends React.Component {
     render(){
         return(
             <div className='directory-menu'>
-                {this.state.sections.map(({ imageUrl, id, title, size }) => 
+                {this.state.sections.map(({id, ...otherSectionProps }) => 
                 <MenuItem 
-                id={id}
-                imageUrl={imageUrl}
-                title={title}
-                size={size} />)}
+                key={id}
+                {...otherSectionProps} />)}
             </div>
         )
     }

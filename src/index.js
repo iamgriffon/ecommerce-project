@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom'; //Ele permite fazer roteamento de front end, transitando entre paginas (sem precisar de API calls, pq isso a gente faz no back)
 import './index.css';
 import App from './App';
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
+    <BrowserRouter> 
     <App />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
