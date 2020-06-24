@@ -1,46 +1,43 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom'; //Route é para definir rota, Switch é para o JSX somente carregar aquilo que vier primeiro
+import { Switch, Route, Redirect } from 'react-router-dom';   //Route é para definir rota, Switch é para o JSX somente carregar aquilo que vier primeiro
+import {connect} from 'react-redux';
 import './App.css';
 import HomePage from './Pages/homepage/homepage.component';
 import ShopPage from './Pages/shop/shop.component';
 import Header from './Components/header/header.component';
 import LoginAndRegisterPage from './Pages/login-and-register/login-and-register.component';
 import {auth, createUserProfileDocument} from './firebase/firebase.utils';
+import {setCurrentUser} from './redux/user/user-actions';
+
+
+const mapStateToProps  = ({user}) => ({
+  currentUser: user.currentUser
+})
+
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
+
+});
+
 
 
 class App extends React.Component {
-  constructor(){
-    super();
-
-    this.state = {
-      currentUser: null,
-      SameSite: null
-    }
-  }
   unSubscribeFromAuth = null;
 
   componentDidMount(){ //muda o estado da autenticação
+    const {setCurrentUser} = this.props;
     this.unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => { //o parametro devolvido vai ser tratado como user
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
-
         userRef.onSnapshot(snapShot => { 
-          this.setState({
-            currentUser: {
+          setCurrentUser({
               id: snapShot.id,
               ...snapShot.data()
-            }
           });
-
-          console.log(this.state);
         });
       } else {
-        this.setState({currentUser: userAuth}) //Se não existir, joga pra null (que é o padrão)
+        setCurrentUser(userAuth) //Se não existir, joga pra null (que é o padrão)
       };
-
-      // console.log(user); //Pra dar uma olhada
-      // this.setState({currentUser: user}); //O estado do currentUser será alterado
-
     })
   }
   
@@ -49,20 +46,31 @@ class App extends React.Component {
   }
 
   render(){  
+    const {currentUser} = this.props
     return(
     <div>
-      <Header currentUser={this.state.currentUser}/>
+      <Header/>
       <Switch>
         <Route exact path='/' component={HomePage} /> 
         <Route path='/shop' component={ShopPage} />
-        <Route path='/signin' component={LoginAndRegisterPage} />
+        <Route path='/signin' 
+        render={()=> 
+        currentUser? 
+          (<Redirect to='/'/>
+          ) : (
+          <LoginAndRegisterPage/>
+          ) 
+        } 
+      />
 
       </Switch>
     </div>
   );
 }}
 
-export default App;
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 //o exact é para tornar o path absoluto, ou seja, só dá para chegar nele se for NAQUELE path.
 //O switch vai fazer o segunte, ele só vai carregar a página se o path bater exatamente com aquele proposto.

@@ -15,12 +15,12 @@ class SignIn extends React.Component {
     }
 
     handleSubmit = async event => {
-        event.preventDefault();
+        event.preventDefault(); //Padrão para evitar o comportamento padrão do HTML form
         const {email, password} = this.state
 
         try {
-            await auth.signInWithEmailAndPassword(email, password)
-            this.setState({email:'', password:''})
+            await auth.signInWithEmailAndPassword(email, password) //Método para logar com login e senha
+            this.setState({email:'', password:''}) //Depois de fazer a request, limpar os campos
         } catch (error) {
             alert(error.message);
         }
