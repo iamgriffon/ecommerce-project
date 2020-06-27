@@ -13,10 +13,10 @@ const config = {
     measurementId: "G-FFG5Z9E3EX"
   };
 
-  export const createUserProfileDocument = async (userAuth, additionalData) => { //Essa function vai pegar o authID (id que identifica a autenticação do usuário)
+  export const createUserProfileDocument = async (userAuth, additionalData) => { 
     if(!userAuth) return;
-    const userRef = firestore.doc(`users/${userAuth.uid}`); //Referencia o id do usuário
-    const snapShot = await userRef.get(); //Ele faz a promise async (pq é uma API Call de get)
+    const userRef = firestore.doc(`users/${userAuth.uid}`); 
+    const snapShot = await userRef.get(); 
 
     if (!snapShot.exists) {
       const { displayName, email } = userAuth;
