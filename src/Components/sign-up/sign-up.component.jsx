@@ -29,9 +29,9 @@ class SignUp extends React.Component {
             password
           );
     
-          await createUserProfileDocument(user, { displayName }); //Request vai ser criada com a UID(user) e o nome do user (displayName)
+          await createUserProfileDocument(user, { displayName }); 
     
-          this.setState({ //Isso vai zerar os campos de input após a request
+          this.setState({
             displayName: '',
             email: '',
             password: '',

@@ -1,5 +1,3 @@
-//ACTIONS VÃO "CONVERTER" os REDUCERS em FUNCTIONS para serem utilizadas nos componentes.
-
 import CartActionTypes from './cart-types';
 
 export const toggleCartHidden = () => ({

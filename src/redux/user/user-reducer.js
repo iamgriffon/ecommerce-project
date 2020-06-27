@@ -1,8 +1,6 @@
-//Esse arquivo pega os cases e designa aos seus payloads
-
 import {userActionTypes} from './user-types'
 
-const INITIAL_STATE = { //Estado inicial do app.js
+const INITIAL_STATE = { 
     currentUser: null,
     SameSite: null
 }

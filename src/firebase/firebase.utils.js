@@ -23,9 +23,8 @@ const config = {
       const createdAt = new Date();
 
       try {
-        await userRef.set({ //set é metodo para "Create" do CRUD, então... se o snapshot não exisitir
-          displayName, //Isso é, se o usuário não existir, ele vai criar um com os dados da sessão do userAuth que o firestore dá
-          email,
+        await userRef.set({
+          displayName, 
           createdAt,
           ...additionalData
         })

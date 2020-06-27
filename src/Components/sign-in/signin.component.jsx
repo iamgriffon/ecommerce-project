@@ -15,12 +15,12 @@ class SignIn extends React.Component {
     }
 
     handleSubmit = async event => {
-        event.preventDefault(); //Padrão para evitar o comportamento padrão do HTML form
+        event.preventDefault(); 
         const {email, password} = this.state
 
         try {
-            await auth.signInWithEmailAndPassword(email, password) //Método para logar com login e senha
-            this.setState({email:'', password:''}) //Depois de fazer a request, limpar os campos
+            await auth.signInWithEmailAndPassword(email, password) 
+            this.setState({email:'', password:''}) 
         } catch (error) {
             alert(error.message);
         }
@@ -29,7 +29,7 @@ class SignIn extends React.Component {
 
     handleChange = event => {
         const{value, name} = event.target
-        this.setState({[name]: value}) //É o mesmo que fazer event.target.value
+        this.setState({[name]: value}) 
     }
 
     render(){
