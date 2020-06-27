@@ -11,7 +11,7 @@ const StripeCheckoutButton = ({price}) => {
 
     return(
         <StripeCheckout
-         name='Dupin Store' //O nome da loja
+         name='Dupin Store'
          ComponentClass='div'
          label='Pay Now'
          currency='BRL'
