@@ -1,7 +1,7 @@
 /* Used as starting data for ShopPage */
 
-const SHOP_DATA = [
-    {
+const SHOP_DATA = {
+  hats: {
       id: 1,
       title: 'Hats',
       routeName: 'hats',
@@ -59,10 +59,10 @@ const SHOP_DATA = [
           name: 'Blue Snapback',
           imageUrl: 'https://i.ibb.co/X2VJP2W/blue-snapback.png',
           price: 16
-        }
+        },
       ]
     },
-    {
+  sneakers: {
       id: 2,
       title: 'Sneakers',
       routeName: 'sneakers',
@@ -114,10 +114,10 @@ const SHOP_DATA = [
           name: 'Timberlands',
           imageUrl: 'https://i.ibb.co/Mhh6wBg/timberlands.png',
           price: 200
-        }
+        },
       ]
     },
-    {
+  jackets: {
       id: 3,
       title: 'Jackets',
       routeName: 'jackets',
@@ -151,10 +151,10 @@ const SHOP_DATA = [
           name: 'Tan Trench',
           imageUrl: 'https://i.ibb.co/M6hHc3F/brown-trench.png',
           price: 185
-        }
+        },
       ]
     },
-    {
+  adults: {
       id: 4,
       title: 'Adults',
       routeName: 'adults',
@@ -197,7 +197,7 @@ const SHOP_DATA = [
         },
       ]
     },
-    {
+  kids: {
       id: 5,
       title: 'Kids',
       routeName: 'kids',
@@ -225,10 +225,10 @@ const SHOP_DATA = [
           name: "T'challa costume",
           imageUrl: "https://cdn-ssl.s7.disneystore.com/is/image/DisneyShopping/2844057908349",
           price: 80
-        },
+        }
       ]
     }
-  ];
+};
   
   export default SHOP_DATA;
   
