@@ -1,8 +1,8 @@
 import React from 'react';
 import FormInput from '../form-input/form-input.component';
-import CustomButton from '../custom-button/custom-button';
-import './sign-in.scss';
 import {signInWithGoogle, auth} from '../../firebase/firebase.utils';
+import { SignInContainer, SignInTitle, SignInButtons, Button } from './sign-in-styles';
+import { SignUpTitle } from '../sign-up/sign-up-styles';
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -34,9 +34,9 @@ class SignIn extends React.Component {
 
     render(){
         return(
-            <div className='sign-in'>
-                <h2>I already have an account</h2>
-                <span>Sign in with your e-mail and password</span>
+            <SignInContainer>
+                <SignInTitle>I already have an account</SignInTitle>
+                <SignUpTitle as='span'>Sign in with your e-mail and password</SignUpTitle>
 
                 <form onSubmit={this.handleSubmit}>
                     <FormInput 
@@ -55,13 +55,13 @@ class SignIn extends React.Component {
                         label='Password'
                         required
                     />
-            <div className='buttons'>
-                <CustomButton type='submit' onClick={this.handleSubmit}>SIGN IN</CustomButton>
-                <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
-                SIGN IN WITH GOOGLE</CustomButton>
-            </div>
+            <SignInButtons>
+                <Button type='submit' onClick={this.handleSubmit}>SIGN IN</Button>
+                <Button onClick={signInWithGoogle} isGoogleSignIn>
+                SIGN IN WITH GOOGLE</Button>
+            </SignInButtons>
                 </form>
-            </div>
+            </SignInContainer>
         )
     }
 }

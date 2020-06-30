@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, Redirect} from 'react-router-dom';   //Route é para definir rota, Switch é para o JSX somente carregar aquilo que vier primeiro
+import {Switch, Route, Redirect} from 'react-router-dom';  
 import {connect} from 'react-redux';
 
 import './App.css';
