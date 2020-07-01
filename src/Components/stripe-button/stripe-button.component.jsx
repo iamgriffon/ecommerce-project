@@ -11,7 +11,7 @@ const StripeCheckoutButton = ({price}) => {
 
     return(
         <StripeCheckout
-         name='Dupin Store'
+         name='DUPN STORE'
          ComponentClass='div'
          label='Pay Now'
          currency='BRL'
@@ -20,7 +20,7 @@ const StripeCheckoutButton = ({price}) => {
          billingAddress
          zipCode
          bitcoin
-         image='https://svgshare.com/i/CUz.svg'
+         image='https://raw.githubusercontent.com/iamgriffon/ecommerce-project/master/src/assets/crown.svg'
          description={`Your total is R$${price}`}
          amount={valueInCents}
          panelLabel='Pay now'

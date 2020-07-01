@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 export const MenuItemContainer = styled.div`
+height: ${({ size }) => (size ? '380px' : '240px')};
 min-width: 30%;
-height: 240px;
-flex: 1 1 auto;
+overflow: hidden;
 display: flex;
+flex: 1 1 auto;
 align-items: center;
 justify-content: center;
 border: 1px solid black;
 margin: 0 7.5px 15px;
-overflow: hidden;
+
 
 &:hover {
     cursor: pointer;
@@ -22,10 +23,6 @@ overflow: hidden;
     & .content {
       opacity: 0.9;
     }
-  }
-
-  &.large {
-    height: 380px;
   }
 
   &:first-child {
@@ -58,10 +55,12 @@ export const ContentContainer = styled.div`
 export const ContentTitle = styled.span`
     font-weight: bold;
     margin-bottom: 6px;
+    justify-content: space-between;
+    text-transform: strong;
     font-size: 22px;
     color: #4a4a4a;
 `
 export const ContentSubtitle = styled.span`
-    font-weight: lighter;
+    font-weight: bold;
     font-size: 16px;
 `
