@@ -34,6 +34,8 @@ const config = {
     return userRef;
   };
 
+  //Essa function pega os dados do servidor local e coloca tudo na DB
+  //OBS: Usar essa functiona UMA ÚNICA VEZ e depois tira-lá do código antes de dar F5
   export const addCollectionItemsAndDocuments = async (collectionKey, objectsToAdd) => {
     const collectionRef = firestore.collection(collectionKey);
     console.log(collectionRef)
@@ -47,8 +49,26 @@ const config = {
     return await batch.commit();
   }
 
+  //Essa function vai até a DB, faz map nas collections, dá um snapshot e retorna um obj atribuindo os nomes que usamos no front
+  export const convertCollectionSnaphotToMap = (collections) => {
+    const transformedCollection = collections.docs.map(doc => {
+      const {title, items} = doc.data(); 
+      return {
+        routeName: encodeURI(title.toLowerCase()),
+        id: doc.id,
+        title,
+        items
+      }
+    });
 
+    //Agora isso vai pegar o arquivo snapshot e separar em objetos para cada tipo de coleção
+    return transformedCollection.reduce((accumulator, collection) => {
+      accumulator[collection.title.toLowerCase()] = collection;
+      return accumulator;
+    }, {})
+  }
 
+  
 
   firebase.initializeApp(config);
   export const auth = firebase.auth();
