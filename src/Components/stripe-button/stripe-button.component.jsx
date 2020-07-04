@@ -15,7 +15,7 @@ const StripeCheckoutButton = ({price}) => {
          ComponentClass='div'
          label='Pay Now'
          currency='BRL'
-         locale='br'
+         locale='auto'
          shippingAddress
          billingAddress
          zipCode

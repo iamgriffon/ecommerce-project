@@ -9,8 +9,6 @@ import ShopPage from './Pages/shop/shop.component';
 import Header from './Components/header/header.component';
 import LoginAndRegisterPage from './Pages/login-and-register/login-and-register.component';
 import CheckoutPage from './Pages/checkout/checkout.component';
-
-import {auth, createUserProfileDocument} from './firebase/firebase.utils';
 // import { addCollectionItemsAndDocuments } from './redux/shop/shop-selectors' para importar o método
 
 
@@ -23,22 +21,11 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          });
-        });
-      }
-      setCurrentUser(userAuth);
+    //   setCurrentUser(userAuth);
       // addCollectionItemsAndDocuments('collections', collectionsArray.map(({title, items}) => ({title, items})));
       //This will set a method that will add the collection items to the database
-    });
+    // });
   }
 
   componentWillUnmount() {
