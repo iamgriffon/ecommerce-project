@@ -14,14 +14,17 @@ import CheckoutPage from './Pages/checkout/checkout.component';
 import {selectCurrentUser} from './redux/user/user-selectors';
 import {selectCollectionsForPreview} from './redux/shop/shop-selectors'
 import {createStructuredSelector} from 'reselect'
+import { checkUserSession } from './redux/user/user-actions';
+
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+      const { checkUserSession } = this.props;
+      checkUserSession();
       // addCollectionItemsAndDocuments('collections', collectionsArray.map(({title, items}) => ({title, items})));
       //This will set a method that will add the collection items to the database
-    // });
   }
 
   componentWillUnmount() {
@@ -54,7 +57,11 @@ const mapStateToProps = createStructuredSelector({
   collectionsArray: selectCollectionsForPreview
 });
 
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
+})
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(App);
