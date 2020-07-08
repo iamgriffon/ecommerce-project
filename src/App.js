@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';  
 import {connect} from 'react-redux';
 
@@ -17,21 +17,13 @@ import {createStructuredSelector} from 'reselect'
 import { checkUserSession } from './redux/user/user-actions';
 
 
-class App extends React.Component {
-  unsubscribeFromAuth = null;
-
-  componentDidMount() {
-      const { checkUserSession } = this.props;
-      checkUserSession();
+const App = ({ checkUserSession, currentUser }) => {
+useEffect(() => {
+  checkUserSession()
+}, [checkUserSession]);
       // addCollectionItemsAndDocuments('collections', collectionsArray.map(({title, items}) => ({title, items})));
       //This will set a method that will add the collection items to the database
-  }
 
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
-
-  render() {
     return (
       <div>
         <Header/>
@@ -40,7 +32,7 @@ class App extends React.Component {
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/checkout' component={CheckoutPage} />
           <Route exact path='/signin' render={() =>
-              this.props.currentUser ? (
+              currentUser ? (
                 <Redirect to='/' />
               ) : (
                 <LoginAndRegisterPage />
@@ -50,7 +42,6 @@ class App extends React.Component {
       </div>
     );
   }
-}
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
