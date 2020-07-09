@@ -6,7 +6,6 @@ import { fetchCollectionsSuccess, fetchCollectionsFailed } from './shop-actions'
 
 export function* fetchCollectionsAsync(){
  try {  
-  yield console.log('I am working now niqqa');
   const collectionRef = firestore.collection('collections');
   const snapshot = yield collectionRef.get();
   const collectionsMap = yield call(convertCollectionSnaphotToMap, snapshot);

@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import {fetchCollectionStart} from '../../redux/shop/shop-actions';
 
 const ShopPage = ({fetchCollectionStart, match}) => {
+  
  useEffect(() => {
    fetchCollectionStart()
  }, [fetchCollectionStart])
