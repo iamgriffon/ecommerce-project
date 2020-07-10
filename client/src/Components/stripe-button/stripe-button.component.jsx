@@ -1,24 +1,35 @@
 import React from 'react';
+import axios from 'axios'
 import StripeCheckout from 'react-stripe-checkout';
 
 const StripeCheckoutButton = ({price}) => {
     const valueInCents = price*100;
     const publishableKey = 'pk_test_51GyRCeH5HPRIeVKkBWiqfwDVds0twyd3qNkr4tZRPdNGVHVIOMuTHSbkazORKflturlYrOyBtnhDxVbuU6u2fpEw00A43SnMUX';
    const onToken = token => {
-        console.log(token);
-        alert('Payment Sucessful!')
+      axios({
+        url: '/payment',
+        method: 'post',
+        data: {
+          amount: valueInCents,
+          token: token
+        }
+      }).then(response => {
+        alert('Payment Succesful!')
+      })
+      .catch(err => {
+        console.log('Payment error: ', err);
+        alert('There was an Issue with your credit card, please make to use a valid credit card for Stripe');
+      })
     }
 
     return(
         <StripeCheckout
          name='DUPN STORE'
-         ComponentClass='div'
          label='Pay Now'
          currency='BRL'
          locale='auto'
-         shippingAddress
          billingAddress
-         zipCode
+         shi
          bitcoin
          image='https://raw.githubusercontent.com/iamgriffon/ecommerce-project/master/src/assets/crown.svg'
          description={`Your total is R$${price}`}
