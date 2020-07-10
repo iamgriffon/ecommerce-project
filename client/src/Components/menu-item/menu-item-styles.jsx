@@ -10,6 +10,7 @@ align-items: center;
 justify-content: center;
 border: 1px solid black;
 margin: 0 7.5px 15px;
+font-family: 'Open Sans Condensed';
 
 
 &:hover {
@@ -61,6 +62,6 @@ export const ContentTitle = styled.span`
     color: #4a4a4a;
 `
 export const ContentSubtitle = styled.span`
-    font-weight: bold;
+    font-weight: lighter;
     font-size: 16px;
 `
