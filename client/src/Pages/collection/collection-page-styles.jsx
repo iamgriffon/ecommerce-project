@@ -7,6 +7,7 @@ export const CategoryContainer = styled.div`
 export const CategoryTitle = styled.h2`
 font-size: 38px;
 margin: 0 auto 30px;
+text-align: left;
 `
 export const CategoryItems = styled.div`
     display: grid;

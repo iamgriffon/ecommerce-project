@@ -12,6 +12,8 @@ export const Title = styled.h1`
         color: grey;
         cursor: default
     }
+    cursor: pointer;
+    max-width: 125px;
 `
 export const ItemPreviewContainer = styled.div`
     display: flex;

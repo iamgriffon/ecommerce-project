@@ -9,7 +9,7 @@ const CollectionPage = ({collection}) => {
     const {title, items} = collection
     return(
     <CategoryContainer>
-       <CategoryTitle>{title}</CategoryTitle>
+       <CategoryTitle>{title.toUpperCase()}</CategoryTitle>
        <CategoryItems>
            {
             items.map(item => <CollectionItem key={item.id} item={item}/>)
