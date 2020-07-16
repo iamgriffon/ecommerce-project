@@ -1,9 +1,7 @@
 import React, {useEffect} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';  
 import {connect} from 'react-redux';
-
-import './App.css';
-
+import {GlobalStyles} from './global-styles';
 import HomePage from './Pages/homepage/homepage.component';
 import ShopPage from './Pages/shop/shop.component';
 import Header from './Components/header/header.component';
@@ -26,6 +24,7 @@ useEffect(() => {
 
     return (
       <div>
+        <GlobalStyles />
         <Header/>
         <Switch>
           <Route exact path='/' component={HomePage} />

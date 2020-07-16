@@ -3,14 +3,13 @@ import styled from 'styled-components';
 export const MenuItemContainer = styled.div`
 height: ${({ size }) => (size ? '380px' : '240px')};
 min-width: 30%;
-overflow: hidden;
-display: flex;
 flex: 1 1 auto;
+display: flex;
 align-items: center;
 justify-content: center;
 border: 1px solid black;
 margin: 0 7.5px 15px;
-font-family: 'Open Sans Condensed';
+overflow: hidden;
 
 
 &:hover {
@@ -32,6 +31,10 @@ font-family: 'Open Sans Condensed';
 
   &:last-child {
     margin-left: 7.5px;
+  }
+  
+  @media screen and (max-width: 800px) {
+    height: 200px;
   }
 `
 export const BackgroundImageContainer = styled.div`

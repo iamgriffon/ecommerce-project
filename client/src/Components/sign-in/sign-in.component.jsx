@@ -44,7 +44,7 @@ const SignIn = ({emailSignInStart, googleSignInStart }) => {
             <SignInButtons>
                 <Button type='submit' onClick={handleSubmit}>SIGN IN</Button>
                 <Button type='button' onClick={googleSignInStart} isGoogleSignIn>
-                SIGN IN WITH GOOGLE</Button>
+                GOOGLE SIGN IN</Button>
             </SignInButtons>
                 </form>
             </SignInContainer>
