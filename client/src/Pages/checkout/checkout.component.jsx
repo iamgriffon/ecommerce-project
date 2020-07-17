@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {selectCartItems, selectCartTotal} from '../../redux/cart/cart-selectors';
-import CheckoutItem from '../../Components/checkout-item/checkout-item.component';
 import StripeCheckoutButton from '../../Components/stripe-button/stripe-button.component';
 import { CheckoutPageContainer, CheckoutHeader, HeaderItem, CheckoutTotal, WarningText } from './checkout-page-styles';
+import Spinner from '../../Components/spinner/spinner-component';
 
+const CheckoutItem = lazy(() => import('../../Components/checkout-item/checkout-item.component'));
 
 const CheckoutPage = ({cartItems, total}) => (
+  <Suspense fallback={<Spinner />}>
     <CheckoutPageContainer>
         <CheckoutHeader>
             <HeaderItem>
@@ -42,6 +44,7 @@ const CheckoutPage = ({cartItems, total}) => (
             <br />
         <StripeCheckoutButton price={total} />
     </CheckoutPageContainer>
+  </Suspense>
 )
 
 const mapStateToProps = createStructuredSelector({
