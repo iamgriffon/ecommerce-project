@@ -14,7 +14,7 @@ export const Title = styled.h1`
     margin-bottom: 25px;
     &: hover {
         color: grey;
-        cursor: default
+        cursor: pointer
     }
     cursor: pointer;
     max-width: 125px;
