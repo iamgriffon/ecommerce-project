@@ -33,7 +33,7 @@ export const CheckoutItemQuantity = styled.span`
       }
 
       .value {
-        margin: 0 10px;
+        margin: 0 5px auto;
       }
 `
 export const RemoveButton = styled.div`

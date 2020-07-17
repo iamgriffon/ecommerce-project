@@ -29,14 +29,33 @@ export const CheckoutTotal = styled.div`
     argin-top: 30px;
     margin-left: auto;
     font-size: 36px;
+
+    @media screen and (max-width: 800px) {
+      align-content: center;
+      margin-left: unset;
+      margin-right: auto;
+      font-size: 24px;
+      padding-top: 10px;
+    }
 `
 export const WarningText = styled.div`
     text-align: center;
     margin-top: 40px;
     font-size: 30px;
-    color: red
+    color: red;
+
+    @media screen and (max-width: 800px) {
+      align-content: center;
+      margin-left: unset;
+      margin-right: auto;
+      font-size: 21px;
+    }
 `
 export const CheckoutButton = styled(StripeCheckoutButton)`
     margin-left: auto;
     margin-top: 50px;
+
+    @media screen and (max-width: 800px) {
+      min-width: unset;
+    }
 `

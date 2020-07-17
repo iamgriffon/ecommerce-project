@@ -2,8 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {selectCartItems, selectCartTotal} from '../../redux/cart/cart-selectors';
-import StripeCheckoutButton from '../../Components/stripe-button/stripe-button.component';
-import { CheckoutPageContainer, CheckoutHeader, HeaderItem, CheckoutTotal, WarningText } from './checkout-page-styles';
+import { CheckoutPageContainer, CheckoutHeader, HeaderItem, CheckoutTotal, WarningText, CheckoutButton } from './checkout-page-styles';
 import Spinner from '../../Components/spinner/spinner-component';
 
 const CheckoutItem = lazy(() => import('../../Components/checkout-item/checkout-item.component'));
@@ -42,7 +41,7 @@ const CheckoutPage = ({cartItems, total}) => (
             4242 4242 4242 4242 - Exp: 01/22 - CVV: 123
         </WarningText>
             <br />
-        <StripeCheckoutButton price={total} />
+        <CheckoutButton price={total} />
     </CheckoutPageContainer>
   </Suspense>
 )
